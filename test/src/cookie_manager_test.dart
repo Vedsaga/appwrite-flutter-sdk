@@ -40,12 +40,10 @@ void main() {
         Cookie('name2', 'value2'),
       ];
       cookieJar.saveFromResponse(uri, cookies);
-      
+
       final request = Request('GET', uri);
       await cookieManager.onRequest(request);
-      expect(request.headers, {
-        'cookie': 'name=value; name2=value2'
-      });
+      expect(request.headers, {'cookie': 'name=value; name2=value2'});
     });
   });
 
@@ -81,12 +79,10 @@ void main() {
       final response = Response(
         'body',
         200,
-        headers: {
-          'set-cookie': 'name=value'
-        },
+        headers: {'set-cookie': 'name=value'},
         request: request,
       );
-      
+
       await cookieManager.onResponse(response);
 
       final cookies = await cookieJar.loadForRequest(uri);

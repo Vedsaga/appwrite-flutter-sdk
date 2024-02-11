@@ -117,7 +117,8 @@ void main() {
 
   group('search()', () {
     test('returns search', () {
-      expect(Query.search('attr', 'keyword1 keyword2'), 'search("attr", ["keyword1 keyword2"])');
+      expect(Query.search('attr', 'keyword1 keyword2'),
+          'search("attr", ["keyword1 keyword2"])');
     });
   });
 
@@ -189,4 +190,3 @@ void main() {
     });
   });
 }
-

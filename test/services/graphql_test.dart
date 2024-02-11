@@ -1,9 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:appwrite/models.dart' as models;
 import 'package:appwrite/src/enums.dart';
-import 'package:appwrite/src/response.dart';
-import 'dart:typed_data';
 import 'package:appwrite/appwrite.dart';
 
 class MockClient extends Mock implements Client {
@@ -23,12 +20,11 @@ class MockClient extends Mock implements Client {
 
   @override
   Future webAuth(
-    Uri? url, 
-    {
-        String? callbackUrlScheme,
-    }
-  ) async {
-    return super.noSuchMethod(Invocation.method(#webAuth, [url]), returnValue: 'done');
+    Uri? url, {
+    String? callbackUrlScheme,
+  }) async {
+    return super
+        .noSuchMethod(Invocation.method(#webAuth, [url]), returnValue: 'done');
   }
 
   @override
@@ -40,45 +36,45 @@ class MockClient extends Mock implements Client {
     Map<String, String>? headers,
     Function(UploadProgress)? onProgress,
   }) async {
-    return super.noSuchMethod(Invocation.method(#chunkedUpload, [path, params, paramName, idParamName, headers]), returnValue: Response(data: {}));
+    return super.noSuchMethod(
+        Invocation.method(
+            #chunkedUpload, [path, params, paramName, idParamName, headers]),
+        returnValue: Response(data: {}));
   }
 }
 
 void main() {
-    group('Graphql test', () {
-        late MockClient client;
-        late Graphql graphql;
+  group('Graphql test', () {
+    late MockClient client;
+    late Graphql graphql;
 
-        setUp(() {
-            client = MockClient();
-            graphql = Graphql(client);
-        });
-
-        test('test method query()', () async {
-            final data = '';
-
-            when(client.call(
-                HttpMethod.post,
-            )).thenAnswer((_) async => Response(data: data));
-
-
-            final response = await graphql.query(
-                query: {},
-            );
-        });
-
-        test('test method mutation()', () async {
-            final data = '';
-
-            when(client.call(
-                HttpMethod.post,
-            )).thenAnswer((_) async => Response(data: data));
-
-
-            final response = await graphql.mutation(
-                query: {},
-            );
-        });
-
+    setUp(() {
+      client = MockClient();
+      graphql = Graphql(client);
     });
+
+    test('test method query()', () async {
+      final data = '';
+
+      when(client.call(
+        HttpMethod.post,
+      )).thenAnswer((_) async => Response(data: data));
+
+      await graphql.query(
+        query: {},
+      );
+    });
+
+    test('test method mutation()', () async {
+      final data = '';
+
+      when(client.call(
+        HttpMethod.post,
+      )).thenAnswer((_) async => Response(data: data));
+
+      await graphql.mutation(
+        query: {},
+      );
+    });
+  });
 }

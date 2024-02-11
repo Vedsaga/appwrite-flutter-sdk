@@ -1,0 +1,6 @@
+.flutter-plugins
+.flutter-plugins-dependencies
+.flutter-plugins-dependencies.lock
+.flutter-plugins-dependencies.yaml
+.flutter-plugins-dependencies.yaml.lock
+pubspec.lock

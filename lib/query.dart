@@ -5,7 +5,7 @@ class Query {
   Query._();
 
   /// Filter resources where [attribute] is equal to [value].
-  /// 
+  ///
   /// [value] can be a single value or a list. If a list is used
   /// the query will return resources where [attribute] is equal
   /// to any of the values in the list.
@@ -69,13 +69,13 @@ class Query {
   static String orderDesc(String attribute) => 'orderDesc("$attribute")';
 
   /// Return results before [id].
-  /// 
+  ///
   /// Refer to the [Cursor Based Pagination](https://appwrite.io/docs/pagination#cursor-pagination)
   /// docs for more information.
   static String cursorBefore(String id) => 'cursorBefore("$id")';
 
   /// Return results after [id].
-  /// 
+  ///
   /// Refer to the [Cursor Based Pagination](https://appwrite.io/docs/pagination#cursor-pagination)
   /// docs for more information.
   static String cursorAfter(String id) => 'cursorAfter("$id")';
@@ -84,7 +84,7 @@ class Query {
   static String limit(int limit) => 'limit($limit)';
 
   /// Return results from [offset].
-  /// 
+  ///
   /// Refer to the [Offset Pagination](https://appwrite.io/docs/pagination#offset-pagination)
   /// docs for more information.
   static String offset(int offset) => 'offset($offset)';

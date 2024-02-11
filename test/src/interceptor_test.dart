@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:http/http.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
@@ -22,7 +21,7 @@ void main() {
       final interceptor = HeadersInterceptor(headers);
       final request = MockRequest();
 
-      final interceptedRequest = await interceptor.onRequest(request);
+      final interceptedRequest = interceptor.onRequest(request);
 
       expect(interceptedRequest.headers, equals(headers));
     });
